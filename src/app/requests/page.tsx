@@ -1,4 +1,6 @@
+import { getServerSession } from "next-auth";
 import CreateRequest from "../../components/CreateRequest";
+import { redirect } from "next/navigation";
 
 async function getRequests() {
     const response = await fetch('http://192.168.1.62:5000/api/collections/requests/records?page=1&perPage=30');
@@ -9,6 +11,13 @@ async function getRequests() {
 
 
 export default async function RequestPage() {
+
+    const session = await getServerSession();
+
+    if (!session) {
+      redirect('/api/auth/signin');
+    }
+
     const requests = await getRequests();
     return (
         <div className="container mx-auto bg-gradient min-h-screen">

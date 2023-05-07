@@ -1,6 +1,7 @@
 import Sidebar from '@/components/Sidebar'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import AuthProvider from './AuthProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,11 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-full bg-white">
-      <body className='h-full'>
-        <Sidebar>
-        {children}
-        </Sidebar>
+      <AuthProvider>
+        <body className='h-full'>
+          <Sidebar>
+            {children}
+          </Sidebar>
         </body>
+      </AuthProvider>
     </html>
   )
 }

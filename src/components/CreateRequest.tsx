@@ -2,15 +2,18 @@
 
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+
 
 export default function CreateRequest() {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [formData, setFormData] = useState({
     title: '',
     type: '',
     done: false,
   });
-
+  
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -28,17 +31,17 @@ export default function CreateRequest() {
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    const { title, type, done } = formData;
+    const { title } = formData;
+    const userEmail = session?.user?.email;
     e.preventDefault();
-    await fetch('http://192.168.1.62:5000/api/collections/requests/records', {
+    await fetch('/api/plexRequests', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         title,
-        type,
-        done,
+        userEmail
       }),
     });
     setFormData({

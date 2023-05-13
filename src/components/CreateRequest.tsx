@@ -86,7 +86,7 @@ export default function CreateRequest() {
   };
 
   return (
-    <div className="container mx-auto bg-gradient min-h-screen py-6">
+    <div className="container mx-auto py-6">
       <h1 className="text-4xl font-bold mb-6">Form Component</h1>
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-lg">
         <div className="mb-4">

@@ -30,7 +30,7 @@ export default async function RequestPage() {
   const requests = await getRequests();
   
   return (
-    <div className="container mx-auto bg-gradient min-h-screen">
+    <div className="container mx-auto bg-gradient h-screen">
       <h1 className="text-4xl font-bold my-6">Request Page</h1>
       <table className="table-fixed w-full">
         <thead>

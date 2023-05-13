@@ -5,7 +5,7 @@ import { authOptions } from "../api/auth/[...nextauth]/route"
 
 async function getRequests() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-  const response = await fetch(`http://localhost:3000/api/plexRequests`, 
+  const response = await fetch(`${baseUrl}/api/plexRequests`, 
     {
       method: 'GET',
       headers: {

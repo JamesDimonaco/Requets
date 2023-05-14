@@ -40,6 +40,9 @@ dependencies:
   next-auth:
     specifier: ^4.22.1
     version: 4.22.1(next@13.4.1)(react-dom@18.2.0)(react@18.2.0)
+  outline:
+    specifier: link:@heroicons/react/24/outline
+    version: link:@heroicons/react/24/outline
   postcss:
     specifier: 8.4.23
     version: 8.4.23

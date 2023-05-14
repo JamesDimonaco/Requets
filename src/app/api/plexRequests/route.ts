@@ -17,6 +17,7 @@ export async function POST(request: Request) {
     const plexRequest = await prisma.plexRequest.create({
         data: {
         title: body.title,
+        info: body.info,
         user: {
             connect: {
             email: body.userEmail
